@@ -1,0 +1,30 @@
+#!/bin/sh /etc/rc.common
+
+USE_PROCD=1
+START=95
+STOP=05
+
+SERVICE_PROG="/usr/bin/new_device_monitor.sh"
+SERVICE_NAME="new_device_monitor"
+SERVICE_DAEMONIZE=1 # Daemonize the process
+
+start_service() {
+    procd_open_instance "$SERVICE_NAME"
+    procd_set_param command "$SERVICE_PROG"
+    procd_set_param stdout 1 # Redirect stdout to log
+    procd_set_param stderr 1 # Redirect stderr to log
+    procd_set_param file /var/log/new_device_monitor.log # Explicit log file for procd
+    procd_set_param respawn 30 5 # Restart if it dies, after 30 sec, 5 attempts max
+    procd_close_instance
+}
+
+stop_service() {
+    # procd handles stopping instances linked to its instance name
+    # Nothing specific needed here unless you have custom cleanup
+    return 0
+}
+
+restart_service() {
+    stop_service
+    start_service
+}

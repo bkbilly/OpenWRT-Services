@@ -1,0 +1,27 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2007 OpenWrt.org
+
+START=99
+STOP=99
+
+SERVICE_PROG="/usr/bin/network_speed.sh"
+SERVICE_NAME="network_speed"
+
+start() {
+    procd_open_instance "$SERVICE_NAME"
+    procd_set_param command /bin/ash "$SERVICE_PROG"
+    procd_set_param stdout 1 # Log output to system log
+    procd_set_param stderr 1 # Log errors to system log
+    procd_set_param respawn 5 5 5 # Respawn after 5 seconds, 5 retries, max 5s delay
+    procd_close_instance
+
+    # Main loop that keeps the script running every 5 seconds
+    while :; do
+        $SERVICE_PROG
+        sleep 5
+    done &
+}
+
+stop() {
+    killall $SERVICE_NAME
+}
