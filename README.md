@@ -6,7 +6,8 @@ This repository is a collection of essential shell scripts and configuration fil
 
 | Project Folder | Description | Key Functionality |
 | :--- | :--- | :--- |
-| **[Network Speed](Network%20Speed)** | Provides **accurate, real-time internet speed (Mbit/s)** monitoring by sampling WAN interface I/O and publishing the calculated rate via MQTT. | 🌐 **Real-Time Bandwidth Usage** (Upload/Download) |
-| **[New Device Monitor](New%20Device%20Monitor)** | An intelligent script that detects and identifies new devices joining your network, publishing rich JSON data via MQTT. | 🔍 **New Device Detection** & MAC Type Identification |
+| **[Network Speed](./Network%20Speed)** | Provides **accurate, real-time internet speed (Mbit/s)** monitoring by sampling WAN interface I/O and publishing the calculated rate via MQTT. | 🌐 **Real-Time Bandwidth Usage** (Upload/Download) |
+| **[New Device Monitor](./New%20Device%20Monitor)** | An intelligent script that detects and identifies new devices joining your network, publishing rich JSON data via MQTT. | 🔍 **New Device Detection** & MAC Type Identification |
+| **[IP Presence Monitor](./IP%20Monitor)** | Reliably tracks device presence by querying the ARP table, publishing JSON payloads with status, MAC, and hostname every 10 seconds. | 📡 **Non-Ping Device Presence** (Online/Offline) |
 
 For installation and configuration details, please see the **`README.md`** file within each respective project folder.
