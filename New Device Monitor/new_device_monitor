@@ -1,8 +1,8 @@
 #!/bin/sh /etc/rc.common
 
 USE_PROCD=1
-START=95
-STOP=05
+START=99
+STOP=99
 
 SERVICE_PROG="/usr/bin/new_device_monitor.sh"
 SERVICE_NAME="new_device_monitor"
