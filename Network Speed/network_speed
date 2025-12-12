@@ -12,7 +12,7 @@ start() {
     procd_set_param command /bin/ash "$SERVICE_PROG"
     procd_set_param stdout 1 # Log output to system log
     procd_set_param stderr 1 # Log errors to system log
-    procd_set_param respawn 5 5 5 # Respawn after 5 seconds, 5 retries, max 5s delay
+    procd_set_param respawn 30 5 5 # Respawn after 30 seconds, 5 retries, max 5s delay
     procd_close_instance
 
     # Main loop that keeps the script running every 5 seconds
