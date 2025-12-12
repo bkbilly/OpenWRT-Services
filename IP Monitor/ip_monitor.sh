@@ -38,7 +38,7 @@ for IP in $TARGET_IPS; do
     # If a line exists, awk extracts the MAC (4th field) and the Status (6th field).
     # If no line is found, MAC is empty, STATUS is 'FAILED'.
     MAC_ADDR=$(echo "$ARP_OUTPUT" | awk '{print $5}' 2>/dev/null)
-    ARP_STATUS=$(echo "$ARP_OUTPUT" | awk '{print $6}' 2>/dev/null)
+    ARP_STATUS=$(echo "$ARP_OUTPUT" | awk '{print $NF}' 2>/dev/null)
     
     # Clean up variables if no entry was found
     if [ -z "$ARP_STATUS" ]; then
